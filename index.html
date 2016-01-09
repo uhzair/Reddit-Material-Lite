@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script src="js/pace.min.js"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Reddit Material</title>
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+        <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#3372DF">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title" id="header">Reddit Material</span>
+                    <div class="mdl-layout-spacer"></div>
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link" href="" id="homenav">Home</a>
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+                <span class="mdl-layout-title" id="header"></span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="" id="homenav">Home</a>
+                </nav>
+            </div>
+            <main id="main" class="mdl-layout__content">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="subreddit">
+                        <label class="mdl-textfield__label" for="subreddit">Please Enter The Sub Reddit You Want To Browse</label>
+                    </div>
+                </div>
+                <div class="page-content" id="home">
+                    <div class="info">
+                        <h5>Reddit Material</h5>
+                        <p>Reddit client built on top of Material Design Lite. You can only read threads main post or view linked content, nothing else.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="js/material.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
