@@ -17,11 +17,44 @@ html, body {
     margin: 0 auto;
 }
 
-.info {
-  text-align: center;
-  padding: 3em;
+#header {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
+.mdl-layout--large-screen-only #srnav:hover {
+    background: rgb(26, 41, 121);
+}
+
+.info {
+    text-align: center;
+    padding: 3em;
+}
+
+.closebtn {
+    display: none;
+}
+
+.votes {
+    text-align: center;
+}
+
+.icon {
+    display: block;
+}
+
+.settings {
+    bottom: 1em;
+    right: 1em;
+    position: absolute;
+    padding: 0.3em 1.5em;
+    background: #3F51B5;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: small;
+    letter-spacing: 0.07em;
+}
 .thread-card-wide.mdl-card {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -33,7 +66,7 @@ html, body {
 
 .thread-card-wide > .mdl-card__title {
     color: #fff;
-    height: 7em;
+    height: 5em;
     background: rgb(68, 68, 68);
 }
 
@@ -45,25 +78,48 @@ html, body {
     background: #D8D8D8;
 }
 
-.threadtitle {
-    display: block;
+.mdl-card__title-text {
     align-self: center;
-    white-space: nowrap;
+}
+
+.mdl-navigation.mdl-layout--large-screen-only {
+    max-width: 70%;
     overflow: hidden;
-    text-overflow: ellipsis;
+}
+
+.threadtitle {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    display: block;
     width: 100%;
+    margin-left: 0.4em;
+    margin-bottom: 0;
 }
 
 .threadcontent > h1, h2, h3, h4, h5, h6 {
     font-size: 1.5em;
 }
 
+.threadcontent, a {
+    color: #000;
+}
+
+.threadcontent, p {
+    line-height: normal;
+    margin-bottom: 1em;
+}
+
 .domain {
-    margin-left: 1em;
-    align-self: flex-end;
+    white-space: nowrap;
+    margin-bottom: 0;
 }
 
 .nsfw-false {
+    display: none;
+}
+
+#form {
     display: none;
 }
 
@@ -87,4 +143,8 @@ html, body {
     right: 100%;
     width: 100%;
     height: 2px;
+}
+
+.md {
+    padding: 1em;
 }
