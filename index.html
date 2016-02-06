@@ -22,30 +22,40 @@
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
+                    <button class="mdl-button mdl-js-button mdl-button--icon closebtn">
+                      <i class="material-icons mdl-color-accent" onclick="homeSweetHome()">close</i>
+                    </button>
                     <span class="mdl-layout-title" id="header">Reddit Material</span>
-                    <div class="mdl-layout-spacer"></div>
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
-                        <a class="mdl-navigation__link" href="" id="homenav">Home</a>
                     </nav>
+                    <div class="mdl-layout-spacer"></div>
+                    <button class="mdl-button mdl-js-button mdl-button--icon" id="addSubReddit">
+                      <i class="material-icons">add</i>
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--icon" id="finishAdd" style="display:none;">
+                        <i class="material-icons">done_all</i>
+                    </button>
                 </div>
             </header>
-            <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-                <span class="mdl-layout-title" id="header"></span>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="" id="homenav">Home</a>
+            <div class="mdl-layout__drawer ">
+                <span class="mdl-layout-title" id="header">Reddit Material</span>
+                <nav class="mdl-navigation" id="breadcrumb">
                 </nav>
             </div>
-            <main id="main" class="mdl-layout__content">
-                <div class="mdl-grid">
+            <main class="mdl-layout__content" id="main">
+                <div class="mdl-grid" id="form">
                     <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" id="subreddit">
-                        <label class="mdl-textfield__label" for="subreddit">Please Enter The Sub Reddit You Want To Browse</label>
+                        <label class="mdl-textfield__label" for="subreddit" id="fieldtext">name of SubReddit(s) you want to add, Comma seperated.</label>
                     </div>
                 </div>
                 <div class="page-content" id="home">
                     <div class="info">
                         <h5>Reddit Material</h5>
-                        <p>Reddit client built on top of Material Design Lite. You can only read threads main post or view linked content, nothing else.</p>
+                        <p>Lightweight Reddit client built on top of Material Design Lite. You can read thread's original post or view linked content, nothing else.</p>
+                        <div>
+                            <a href="#" onclick="alert('soon');" class="settings">settings</a>
+                        </div>
                     </div>
                 </div>
             </main>
