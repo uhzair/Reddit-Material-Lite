@@ -9,6 +9,8 @@ if (savedSubReddits.length > 0){
     $.each(savedSubReddits, function(i,j){
         $('nav').append(`<a class="mdl-navigation__link" href="${j}" id="srnav">${j}</a>`);
     });
+    subReddit = savedSubReddits.join('+');
+    refresh();
 }
 
 setInterval("registerComponents();", 500);
