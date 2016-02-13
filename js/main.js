@@ -1,5 +1,5 @@
 var after = '';
-var subReddit = '';
+var currentSub = '';
 var home = $('#home');
 var doomedYet = false;
 var adding = false;
@@ -9,13 +9,13 @@ if (savedSubReddits.length > 0){
     $.each(savedSubReddits, function(i,j){
         $('nav').append(`<a class="mdl-navigation__link" href="${j}" id="srnav">${j}</a>`);
     });
-    subReddit = savedSubReddits.join('+');
+    currentSub = savedSubReddits.join('+');
     refresh();
 }
 
 setInterval("registerComponents();", 500);
 
-$('#subreddit').change(function() {
+$('#addSub').change(function() {
     if (adding) {
         addSubReddit($(this).val());
     }
@@ -40,9 +40,9 @@ $('#finishAdd').click(function() {
 
 $('nav').on('click', '#srnav', function(event) {
     event.preventDefault();
-    subReddit = $(this).text();
+    currentSub = $(this).text();
     refresh();
-    $('#header,title').text('/r/' + subReddit);
+    $('#header,title').text('/r/' + currentSub);
 });
 
 $('#main').bind('scroll', areweatthebottomYet);
@@ -58,7 +58,7 @@ function addSubReddit(subreddits) {
 
 function loadThreads() {
     $.ajax({
-        url: 'https://www.reddit.com/r/' + subReddit + '/.json?after=' + after,
+        url: 'https://www.reddit.com/r/' + currentSub + '/.json?after=' + after,
         success: function(data) {
             after = data.data.after;
             doomedYet = (after === null) ? true: false;
@@ -121,6 +121,11 @@ function loadThread(src) {
                             <div class="mdl-card__actions mdl-card--border">
                                 <div id="threadcontent"></div>
                             </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a href="http://www.reddit.com${j.data.permalink}" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                                    Permalink
+                                </a>
+                            </div>
                         </div>
                         <div class="mdl-cell mdl-cell--12-col">
                             <h5>Threads</h5>
@@ -147,7 +152,7 @@ function refresh() {
 }
 
 function homeSweetHome() {
-    subReddit = '';
+    currentSub = '';
     after = '';
     home.html(`
             <div class="info">
@@ -163,7 +168,7 @@ function homeSweetHome() {
 }
 
 function areweatthebottomYet(e) {
-    if (!doomedYet && subReddit != '') {
+    if (!doomedYet && currentSub != '') {
         var elem = $(e.currentTarget);
         if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
             loadThreads();
