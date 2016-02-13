@@ -56,7 +56,7 @@ function addSubReddit(subreddits) {
     localStorage.ssrs = JSON.stringify(savedSubReddits);
 }
 
-function loadThreads() {
+function loadThreads(viewingPost,permalink) {
     $.ajax({
         url: 'https://www.reddit.com/r/' + currentSub + '/.json?after=' + after,
         success: function(data) {
@@ -64,35 +64,37 @@ function loadThreads() {
             doomedYet = (after === null) ? true: false;
             var threadsdata = data.data.children;
             $.each(threadsdata, function(i, j) {
-                home.append(`
-                        <div class="thread-card-wide mdl-card mdl-shadow--2dp">
-                            <div class="mdl-card__title">
-                                <div class="votes">
-                                    <i class="material-icons icon">keyboard_arrow_up</i>
-                                    ${j.data.score}
-                                    <i class="material-icons icon">keyboard_arrow_down</i>
+                if (!viewingPost && permalink != j.data.permalink) {
+                    home.append(`
+                            <div class="thread-card-wide mdl-card mdl-shadow--2dp">
+                                <div class="mdl-card__title">
+                                    <div class="votes">
+                                        <i class="material-icons icon">keyboard_arrow_up</i>
+                                        ${j.data.score}
+                                        <i class="material-icons icon">keyboard_arrow_down</i>
+                                    </div>
+                                    <p class="threadtitle">
+                                        ${j.data.title}
+                                    </p>
+                                    <br/>
+                                    <p class="domain">
+                                        (${j.data.domain})
+                                    </p>
                                 </div>
-                                <p class="threadtitle">
-                                    ${j.data.title}
-                                </p>
-                                <br/>
-                                <p class="domain">
-                                    (${j.data.domain})
-                                </p>
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <a class="nsfw-${j.data.over_18} mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                                        NSFW
+                                    </a>
+                                    <a href="${j.data.url}" target="_blank" class="threadlink mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                                        View
+                                    </a>
+                                    <a href="http://www.reddit.com${j.data.permalink}" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                                        Permalink
+                                    </a>
+                                </div>
                             </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                <a class="nsfw-${j.data.over_18} mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
-                                    NSFW
-                                </a>
-                                <a href="${j.data.url}" target="_blank" class="threadlink mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                                    View
-                                </a>
-                                <a href="http://www.reddit.com${j.data.permalink}" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                                    Permalink
-                                </a>
-                            </div>
-                        </div>
-                    `);
+                        `);
+                }
             });
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -122,16 +124,16 @@ function loadThread(src) {
                                 <div id="threadcontent"></div>
                             </div>
                             <div class="mdl-card__actions mdl-card--border">
-                                <a href="http://www.reddit.com${j.data.permalink}" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                                <a href="http://www.reddit.com${threaddata.permalink}" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
                                     Permalink
                                 </a>
                             </div>
                         </div>
                         <div class="mdl-cell mdl-cell--12-col">
-                            <h5>Threads</h5>
+                            <h5>Other Posts</h5>
                         </div>`);
             $('#threadcontent').html($("<p/>").html(threaddata.selftext_html).text());
-            loadThreads();
+            loadThreads(true,threaddata.permalink);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             errorThrown ? alert(errorThrown) : alert('There was an error with the request');
