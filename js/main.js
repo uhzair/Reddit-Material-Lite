@@ -158,13 +158,13 @@ function homeSweetHome() {
     after = '';
     home.html(`
             <div class="info">
-                    <h5>Reddit Material</h5>
+                    <h5>Reddit Material Lite</h5>
                     <p>Lightweight Reddit client built on top of Material Design Lite. You can read thread's original post or view linked content, nothing else.</p>
             </div>
             <div>
                 <a href="#" onclick="alert('soon');" class="settings">settings</a>
             </div>`);
-    $('#header,title').text('Reddit Material');
+    $('#header,title').text('Reddit Material Lite');
     $('.closebtn').css('display','none');
     adding = false;
 }
