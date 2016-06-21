@@ -38,6 +38,11 @@ $('#finishAdd').click(function() {
     toggleCtrls();
 });
 
+$('.closebtn').click(function(){
+    refresh();
+    $(this).css('display','none');
+});
+
 $('nav').on('click', '#srnav', function(event) {
     event.preventDefault();
     currentSub = $(this).text();
@@ -85,6 +90,7 @@ function loadThreads(viewingPost,permalink) {
                                     <a class="nsfw-${j.data.over_18} mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
                                         NSFW
                                     </a>
+                                    
                                     <a href="${j.data.url}" target="_blank" class="threadlink mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
                                         View
                                     </a>
